@@ -4,7 +4,7 @@
 
 We participated in this ASA DataFest held by University of Toronto Statistical Sciences and University of Toronto Scarborough Computer and Mathematical Sciences in May of 2019. We won the Honorable Mention award. Big thanks to my teammates: Ziang Zhang, Xiaotong Liu and Haoye Wang.  
 
-You can find more information of this event at [Their Official Website @UofT](https://utorontodatafest.wordpress.com/)
+You can find more information about this event at [their official website @UofT](https://utorontodatafest.wordpress.com/).
 
 ## Setup
 
@@ -15,7 +15,9 @@ You can watch the introduction video to this event at [ASA Datafest CSI Pacific 
 ## Problem
 
 Very little is known about managing player fatigue in professional athletics, and many training decisions are based on “gut feel.” Fatigue is typically estimated by asking players how they feel in wellness surveys. There is no agreed-upon standard of defining fatigue so the relationship between workload and fatigue is unclear.  
-In this challenge, we were encouraged to explore new ways of measuring fatigue and examine its effects on players’ performance and physical wellness. The datasets provide a number of observations that we believe will be useful to measure fatigue in players of the Canadian National Women's Rugby Team in the 2017-2018 season. 
+
+In this challenge, we were encouraged to explore new ways of measuring fatigue and examine its effects on players’ performance and physical wellness. The datasets provide a number of observations that we believe will be useful to measure fatigue in players of the Canadian National Women's Rugby Team in the 2017-2018 season.  
+
 Remember that training load is not the same as fatigue, and one question to explore is whether you can find evidence that some measures of training load are better than others. 
 
 ## DataSet
