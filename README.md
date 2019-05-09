@@ -32,19 +32,26 @@ Tells you when, where, opponent, and high-level outcomes and events in the game(
 
 **How were data collected:** information comes from this website: [https://en.wikipedia.org/wiki/2017%E2%80%9318_World_Rugby_Sevens_Series](https://en.wikipedia.org/wiki/2017%E2%80%9318_World_Rugby_Sevens_Series)  
 **How to use:** high-level game information.  
-**Links to other dataset:** GameID link to gps. Date links to wellness, GPS, Rate of Perceived Effort(RPE).  
+**Links to other dataset:s** GameID link to gps. Date links to wellness, GPS, Rate of Perceived Effort(RPE).  
 
 ### Wellness.csv
 Self-reported health and wellness for each player.  
 
 **How were data collected:** self-reported by each athlete. In principle, reported every morning before 8:30 a.m. All values are subjective, but Urine Specific Gravity(USG) is recorded through a sensor. Each athelete may have a different sense of what "typical" means for them.  
 **How to use:** provides subjective sense of energy levels. USG can provide evidence of dehydration.  
-**Links to other dataset:** Date links to wellness, GPS, RPS, games. PlayerID links to RPE, GPS.  
+**Links to other datasets:** Date links to wellness, GPS, RPS, games. PlayerID links to RPE, GPS.  
+
+### RPE.csv
+Rate of Percieved Effort. Self-reported workloads for each "session". A session can be a workout(focusing on a particular objective) or a game.
+
+**How were data collected:** In theory, each player rates herself after each session and/or game. It is easy, however, for players to neglect this when playing back-to-back games. Note that each day there can be multiple "sessions", and that a "session" can be a recovery period, a game, strength and conditioning, etc. There is no way to associate a particular rating with a particular game on days in which multiple games were played.  
+**How to use:** Can be used to provide a subjective sense of fatigue. Note that what one player rates "4" for RPE another might rate "7" or any other number. For many sports analysts, a ratio of acute/chronic training load > 1.2 indicates that the athlete is currently in "high" traning load and at an increased risk for injury. A ratio < 0.8 indicates that they are "de-training" or recovering. These cut-off are based on Australlian Football League players.   
+**Links to other datasets:** Date links to wellness, GPS, games. PlayerID links to wellness and GPS. 
 
 ### gps.csv
 Position data for each player during a game.  
 
 **How were data collected:** Data collected from sensors worn by players. Originally, data were collected at 100 Hz(100 times per second), but have been collapsed to 10 Hz. Thus, each second, there are 10 "frames" that provide information on player location and acceleration.  
-Note that we do not know the location of the ball, or the orientation of the playing field. The "z" acceleration is in the up-ward direction, x is back-front, y is side-to-side.
-**How to use:** with caution. Note that making plots of location is unlikely to help you understand the role of fatigue unless you first think carefully about aspects of location that might be affected by fatigue.
-**Links to other dataset:** GameID link to games. Date links to wellness, GPS, RPE. PlayerID links to wellness, RPE.
+Note that we do not know the location of the ball, or the orientation of the playing field. The "z" acceleration is in the up-ward direction, x is back-front, y is side-to-side.  
+**How to use:** with caution. Note that making plots of location is unlikely to help you understand the role of fatigue unless you first think carefully about aspects of location that might be affected by fatigue.  
+**Links to other datasets:** GameID link to games. Date links to wellness, GPS, RPE. PlayerID links to wellness, RPE.
