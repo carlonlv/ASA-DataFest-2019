@@ -25,6 +25,8 @@ The data were collected during the 2017-2018 season. There are five files that g
 
 Player level data are provided by the individual athletes themselves and by IMU/GPS devices worn on their vests during games. GPS data  
 may not be available if players are out of range of the satellites. Players are uniquely identified by the PlayerID variable in all data files. Note that players numbered 18-21 did not play in any of the games in the datasets, and so they can be removed from the analysis.  
+**Due to the requirement of the Organizer, we are not allowed to distribute the datasets online.**
+
 ### Games.csv
 Tells you when, where, opponent, and high-level outcomes and events in the game("box scores").  
 
@@ -38,3 +40,11 @@ Self-reported health and wellness for each player.
 **How were data collected:** self-reported by each athlete. In principle, reported every morning before 8:30 a.m. All values are subjective, but Urine Specific Gravity(USG) is recorded through a sensor. Each athelete may have a different sense of what "typical" means for them.  
 **How to use:** provides subjective sense of energy levels. USG can provide evidence of dehydration.  
 **Links to other dataset:** Date links to wellness, GPS, RPS, games. PlayerID links to RPE, GPS.  
+
+### gps.csv
+Position data for each player during a game.  
+
+**How were data collected:** Data collected from sensors worn by players. Originally, data were collected at 100 Hz(100 times per second), but have been collapsed to 10 Hz. Thus, each second, there are 10 "frames" that provide information on player location and acceleration.  
+Note that we do not know the location of the ball, or the orientation of the playing field. The "z" acceleration is in the up-ward direction, x is back-front, y is side-to-side.
+**How to use:** with caution. Note that making plots of location is unlikely to help you understand the role of fatigue unless you first think carefully about aspects of location that might be affected by fatigue.
+**Links to other dataset:** GameID link to games. Date links to wellness, GPS, RPE. PlayerID links to wellness, RPE.
