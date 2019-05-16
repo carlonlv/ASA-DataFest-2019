@@ -1,0 +1,59 @@
+---
+title: "ASA DataFest 2019"
+author: "Jialun Lyu"
+date: "May 15, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("readr")
+games <- read_csv("Data for DataFest 2019/data/games.csv")
+gps <- read_csv("Data for DataFest 2019/data/gps.csv")
+rpe <- read_csv("Data for DataFest 2019/data/rpe.csv")
+wellness <- read_csv("Data for DataFest 2019/data/wellness.csv")
+library("tidyverse")
+wellness$Date <- as.Date(wellness$Date)
+games$Date <- as.Date(games$Date)
+rpe$Date <- as.Date(rpe$Date)
+```
+
+## Introduction
+
+In our project, we first tried to examine whether the current overall measurement of fatigue, "Monotoring Score" can be improved or not. To do this, we noticed that if "Monitoring Score" is indeed a good overall measure of fatigue, then for groups of players who believe they were performing better than usual in the current game, we should expect their "Monitoring Score" are on average larger than that of groups of players who think they didnot perform as well as usual in the games.  
+
+```{r}
+```
+
+However, based on the boxplots, these two groups seem to have similar "Monitoring Scores" instead. Does that mean these five subjective measures of fatigues are totally useless? Maybe not! Since we know that even though those measures are subjective and may even be biased in some ways, they are still very good proxy to the real physical fatigue levels of players. Therefore, we just need to find a more efficient way to use this information. 
+
+To do that, we decided to apply PCA on these five standardized subjective features, and the reason that we standardized these features is to take in to account the individual's variations. Using R, we found all of the principal component vectors, and we noticed that the first principal component vector alone explains the most of variability among these features. 
+
+```{r PreSortingWellness}
+well <- wellness %>%
+  arrange(Date) %>%
+  group_by(PlayerID) %>%
+  arrange(PlayerID) %>%
+  mutate(Date=Date-1)
+```
+
+```{r Boxplots}
+PlayerinGame <- gps %>%
+  inner_join(games, by = "GameID") %>%
+  group_by(PlayerID, Date) %>%
+  summarise(Mspeed = mean((Speed)**2), Macimpulse = mean(abs(AccelImpulse)), Macload = mean(abs(AccelLoad))) %>%
+  inner_join(well, by = c("PlayerID", "Date")) %>%
+  ungroup()
+X <- select(PlayerinGame,"Fatigue","Soreness","Desire","Irritability","SleepQuality","Mspeed","Macimpulse","Macload")
+PCA <- prcomp(X)
+summary(PCA)
+biplot(PCA$x,PCA$rotation[,1:5])
+X1 <- mutate(X,PC1=as.matrix(X)%*%PCA$rotation[,1])
+X1 <- mutate(X1,PC2=as.matrix(X)%*%PCA$rotation[,2])
+X1$SleepHours <- PlayerinGame$SleepHours
+PlayerinGame$OurMeasure <- X1$PC1
+```
+
+Therefore, we will assign the components of first loading vector as weights to these five features and compute a weighted sum of them, and that weighted sum will be our new measure of fatigue called "Sscore". Now, we claim that this "Sscore" computed using PCA, will be much better than "Monitoring Scores", since first principal component vector by definition is the best direction in terms of efficiently utilizing all the information in the feature space. To confirm that, we can do a pooled t-test between Sscores of players with higher self-rating and Sscores of players with lower self-rating, since all the diagnostics such as normal qqplots and F test of variance, showed that our pooled t-test is valid. Consequently, we find that now we have strong evidence to say that these two groups are on average with different Sscores which we failed to conclude when we used "Monitoring Scores". This result strongly suggests that we should think about using our "Sscore" to measure the overall fatigue instead of the original Monitoring Scores. 
+
+
