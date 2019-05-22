@@ -1,0 +1,260 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={ASA DataFest 2019},
+            pdfauthor={Jialun Lyu},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{ASA DataFest 2019}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Jialun Lyu}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{May 15, 2019}
+
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
+
+In our project, we first tried to examine whether the current overall
+measurement of fatigue, ``Monotoring Score'' can be improved or not. To
+do this, we noticed that if ``Monitoring Score'' is indeed a good
+overall measure of fatigue, then for groups of players who believe they
+were performing better than usual in the current game, we should expect
+their ``Monitoring Score'' are on average larger than that of groups of
+players who think they didnot perform as well as usual in the games.
+
+We can use two sample t-test as follows:
+
+\begin{verbatim}
+## 
+##  F test to compare two variances
+## 
+## data:  ANOVA$MonitoringScore[ANOVA$BestOutOfMyself == "Not at all"] and ANOVA$MonitoringScore[ANOVA$BestOutOfMyself == "Absolutely"]
+## F = 0.77258, num df = 10, denom df = 46, p-value = 0.692
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  0.3299648 2.4979691
+## sample estimates:
+## ratio of variances 
+##          0.7725843
+\end{verbatim}
+
+Since the two groups have variances not significantly different from
+each other, we can use pooled variance two sample t-tests.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(ANOVA}\OperatorTok{$}\NormalTok{MonitoringScore[ANOVA}\OperatorTok{$}\NormalTok{BestOutOfMyself}\OperatorTok{==}\StringTok{"Not at all"}\NormalTok{],}
+\NormalTok{       ANOVA}\OperatorTok{$}\NormalTok{MonitoringScore[ANOVA}\OperatorTok{$}\NormalTok{BestOutOfMyself}\OperatorTok{==}\StringTok{"Absolutely"}\NormalTok{], }\DataTypeTok{var.equal =}\NormalTok{ T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  ANOVA$MonitoringScore[ANOVA$BestOutOfMyself == "Not at all"] and ANOVA$MonitoringScore[ANOVA$BestOutOfMyself == "Absolutely"]
+## t = -0.97797, df = 56, p-value = 0.3323
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -3.354976  1.153816
+## sample estimates:
+## mean of x mean of y 
+##  16.09091  17.19149
+\end{verbatim}
+
+\includegraphics{Project_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+We can then check the assumptions of the two sample t-tests.
+
+\includegraphics{Project_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+It seems that normality assumption is satisfied.
+
+It seems that based on the boxplots, these two groups seem to have
+similar ``Monitoring Scores'' instead. Does that mean these five
+subjective measures of fatigues are totally useless? Maybe not! Since we
+know that even though those measures are subjective and may even be
+biased in some ways, they are still very good proxy to the real physical
+fatigue levels of players. Therefore, we just need to find a more
+efficient way to use this information.
+
+To do that, we decided to apply PCA on these five standardized
+subjective features, and the reason that we standardized these features
+is to take in to account the individual's variations. Using R, we found
+all of the principal component vectors, and we noticed that the first
+principal component vector alone explains the most of variability among
+these features.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X <-}\StringTok{ }\KeywordTok{select}\NormalTok{(PlayerinGame,}\StringTok{"Fatigue"}\NormalTok{,}\StringTok{"Soreness"}\NormalTok{,}\StringTok{"Desire"}\NormalTok{,}\StringTok{"Irritability"}\NormalTok{,}\StringTok{"SleepQuality"}\NormalTok{,}\StringTok{"Mspeed"}\NormalTok{,}\StringTok{"Macimpulse"}\NormalTok{,}\StringTok{"Macload"}\NormalTok{)}
+\NormalTok{PCA <-}\StringTok{ }\KeywordTok{prcomp}\NormalTok{(X)}
+\KeywordTok{summary}\NormalTok{(PCA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Importance of components:
+##                           PC1    PC2    PC3    PC4     PC5     PC6     PC7
+## Standard deviation     1.7949 1.0925 0.9481 0.8465 0.61243 0.55226 0.10104
+## Proportion of Variance 0.4794 0.1776 0.1338 0.1066 0.05581 0.04538 0.00152
+## Cumulative Proportion  0.4794 0.6569 0.7907 0.8973 0.95310 0.99848 1.00000
+##                            PC8
+## Standard deviation     0.00151
+## Proportion of Variance 0.00000
+## Cumulative Proportion  1.00000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{biplot}\NormalTok{(PCA}\OperatorTok{$}\NormalTok{x,PCA}\OperatorTok{$}\NormalTok{rotation[,}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Project_files/figure-latex/Boxplots-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X1 <-}\StringTok{ }\KeywordTok{mutate}\NormalTok{(X,}\DataTypeTok{PC1=}\KeywordTok{as.matrix}\NormalTok{(X)}\OperatorTok{%*%}\NormalTok{PCA}\OperatorTok{$}\NormalTok{rotation[,}\DecValTok{1}\NormalTok{])}
+\NormalTok{X1 <-}\StringTok{ }\KeywordTok{mutate}\NormalTok{(X1,}\DataTypeTok{PC2=}\KeywordTok{as.matrix}\NormalTok{(X)}\OperatorTok{%*%}\NormalTok{PCA}\OperatorTok{$}\NormalTok{rotation[,}\DecValTok{2}\NormalTok{])}
+\NormalTok{X1}\OperatorTok{$}\NormalTok{SleepHours <-}\StringTok{ }\NormalTok{PlayerinGame}\OperatorTok{$}\NormalTok{SleepHours}
+\NormalTok{PlayerinGame}\OperatorTok{$}\NormalTok{OurMeasure <-}\StringTok{ }\NormalTok{X1}\OperatorTok{$}\NormalTok{PC1}
+\end{Highlighting}
+\end{Shaded}
+
+Therefore, we will assign the components of first loading vector as
+weights to these five features and compute a weighted sum of them, and
+that weighted sum will be our new measure of fatigue called ``Sscore''.
+Now, we claim that this ``Sscore'' computed using PCA, will be much
+better than ``Monitoring Scores'', since first principal component
+vector by definition is the best direction in terms of efficiently
+utilizing all the information in the feature space. To confirm that, we
+can do a pooled t-test between Sscores of players with higher
+self-rating and Sscores of players with lower self-rating, since all the
+diagnostics such as normal qqplots and F test of variance, showed that
+our pooled t-test is valid. Consequently, we find that now we have
+strong evidence to say that these two groups are on average with
+different Sscores which we failed to conclude when we used ``Monitoring
+Scores''. This result strongly suggests that we should think about using
+our ``Sscore'' to measure the overall fatigue instead of the original
+Monitoring Scores.
+
+
+\end{document}
